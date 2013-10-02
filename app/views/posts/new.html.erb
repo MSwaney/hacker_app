@@ -1,0 +1,9 @@
+<h1>Create New Feed</h1>
+
+<%= form_for @post do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label 'URL (include HTTP://)' %>
+  <%= f.text_field :link %>
+  <%= f.submit %>
+<% end %>
