@@ -1,0 +1,33 @@
+<h2><%= link_to @post.title, @post.link %></h2>
+
+
+<%= form_for @comment do |f| %>
+  <%= f.label :Comment %>
+  <%= f.text_field :content %>
+  <%= f.hidden_field :commentable_type, :value => @post.class %>
+  <%= f.hidden_field :commentable_id, :value => @post.id %>
+  <%= f.submit %>
+<% end %>
+
+<% @comments.each do |comment| %>
+  <div>
+    <%= comment.content %>
+    <span class='click'>Respond to comment</span>
+    <div class='hidden'>
+      <%= form_for @sub_comment do |f| %>
+        <%= f.label :Comment %>
+        <%= f.text_field :content %>
+        <%= f.hidden_field :commentable_type, :value => comment.class %>
+        <%= f.hidden_field :commentable_id, :value => comment.id %>
+        <%= f.submit 'Respond'%>
+      <% end %>
+    </div>
+    <% if comment.comments.any? %>
+      <% comment.comments.each do |sub_comment| %>
+        <div class="sub_comment">
+          <%= sub_comment.content %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

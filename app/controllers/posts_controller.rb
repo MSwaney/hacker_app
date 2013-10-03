@@ -1,10 +1,13 @@
-class PostsController < ActionController::Base
+class PostsController < ApplicationController
   def index
-    Post.all.each { |post| post.refresh_popularity }
-    @posts = Post.all
+    @posts = Post.ordered_by_popularity
   end
 
   def show
+    @post = Post.find(params[:id])
+    @comments = @post.ordered_comments
+    @comment = @post.comments.new
+    @sub_comment = @comment.comments.new
   end
 
   def new

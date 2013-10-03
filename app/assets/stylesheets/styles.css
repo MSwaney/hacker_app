@@ -1,0 +1,12 @@
+.hidden {
+  display: none;
+}
+
+.sub_comment {
+  margin-left: 15px;
+}
+
+.click {
+  text-decoration: underline;
+  color: blue;
+}

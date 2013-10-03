@@ -1,0 +1,5 @@
+  <%= f.label :Comment %>
+  <%= f.text_field :content %>
+  <%= f.hidden_field :commentable_type, :value => f.class %>
+  <%= f.hidden_field :commentable_id, :value => f.id %>
+  <%= f.submit %>

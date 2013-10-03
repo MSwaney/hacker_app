@@ -7,6 +7,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
+gem 'bcrypt-ruby'
 
 group :test, :development do
   gem 'rspec-rails'

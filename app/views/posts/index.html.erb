@@ -1,12 +1,12 @@
 <h1>Hacker Chow</h1>
 
 <ol>
-  <% @posts.order("popularity DESC, created_at DESC").each do |post| %>
-    <li><%= link_to post.title, post.link %> Popularity: <%= post.popularity %> 
-      <%= button_to("▲", :action => "create", :controller => "votes", post: { :post_id => post, :vote => 1 } ) %> 
-      <%= button_to("▼", :action => "create", :controller => "votes", post: { :post_id => post, :vote => -1 } ) %>
+  <% @posts.each do |post| %>
+    <li><%= link_to post.title, post.link %> Popularity: <%= post.popularity %>
+      <%= button_to("▲", :action => "create", :controller => "votes", post: { :post_id => post.id, :vote => 1 } ) %> 
+      <%= button_to("▼", :action => "create", :controller => "votes", post: { :post_id => post.id, :vote => -1 } ) %>
       Posted on: <%= post.created_at %>
-      <%= link_to new_comment_path %>
+      <%= link_to 'View Comments', "/posts/#{post.id}" %>
     </li>
   <% end %>
 </ol>
